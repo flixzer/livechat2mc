@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # YTChat Bridge (Client)
 
 **CLIENT-ONLY** Fabric mod for Minecraft **1.21.8**. Mirrors YouTube Live Chat into the **local** chat HUD using Innertube.  
@@ -31,3 +32,7 @@ No packets to the server. Not a server mod. Do **not** install on dedicated serv
 - `fabric.mod.json` has `environment: client`.
 - Only `client` & `modmenu` entrypoints are registered.
 - No packets or networking to the server are used.
+=======
+# livechat2mc
+LiveChat2MC connects your Minecraft chat with live messages from YouTube streams. Instead of switching screens, you can see the chat directly in-game while you play.
+>>>>>>> 87c77273a9cc05079459a19f176af7d1d3952df8
