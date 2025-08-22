@@ -1,0 +1,70 @@
+plugins {
+  // Gradle plugins DSL requires a constant version literal (cannot use property reference directly)
+  id 'fabric-loom' version '1.10-SNAPSHOT'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+  archivesName = project.archives_base_name
+}
+
+repositories {
+  mavenCentral()
+  maven { url = 'https://maven.fabricmc.net/' }
+  maven { url = 'https://maven.terraformersmc.com/releases/' }
+  maven { url = 'https://maven.shedaniel.me/' }
+}
+
+dependencies {
+  minecraft "com.mojang:minecraft:${project.minecraft_version}"
+  mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+  modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+  modImplementation "net.fabricmc.fabric-api:fabric-api:${project.api_version}"
+
+  // Optional UI deps (compileOnly + dev runtime)
+  modCompileOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
+  modRuntimeOnly  "com.terraformersmc:modmenu:${project.modmenu_version}"
+  modCompileOnly "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_version}"
+  modRuntimeOnly  "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_version}"
+}
+
+// Exclude ModMenu integration class when ModMenu dependency is commented out
+// Always include sources now that we have a defensive ModMenuEntry implementation
+
+loom {
+  runs {
+    client {
+      client()
+      setConfigName('Fabric Client')
+      ideConfigGenerated(true)
+    }
+  }
+}
+
+java {
+  toolchain { languageVersion = JavaLanguageVersion.of(Integer.parseInt(project.java_version)) }
+  withSourcesJar()
+}
+
+tasks.withType(JavaCompile).configureEach {
+  it.options.release.set(Integer.parseInt(project.java_version))
+}
+
+processResources {
+  inputs.property 'version', project.version
+  inputs.property 'minecraft_version', project.minecraft_version
+  inputs.property 'loader_version', project.loader_version
+  inputs.property 'api_version', project.api_version
+  inputs.property 'modmenu_version', project.modmenu_version
+  inputs.property 'cloth_version', project.cloth_version
+  filesMatching('fabric.mod.json') {
+    expand project.properties
+  }
+}
+
+tasks.named('wrapper') {
+  gradleVersion = '8.12'
+  distributionType = Wrapper.DistributionType.BIN
+}

@@ -1,0 +1,47 @@
+# Gradle
+.gradle/
+build/
+run/
+out/
+classes/
+bin/
+
+# Gradle wrapper safety
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+*.classpath
+*.project
+
+# Logs / temp
+logs/
+*.log
+*.tmp
+*.bak
+*.orig
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Java / crash dumps
+hs_err_pid*
+replay_pid*
+
+# Editors
+*.swp
+*.swo
+
+# Env / secrets
+.env
+.env.*
+*.keystore
+
+# Misc caches
+.cache/

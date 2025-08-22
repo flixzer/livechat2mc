@@ -1,0 +1,11 @@
+{
+  "livechat2mc.config.title": "LiveChat2MC Config",
+  "livechat2mc.config.prefix": "Prefix",
+  "livechat2mc.config.throttle": "Throttle (msgs/min)",
+  "livechat2mc.config.colors": "Name Colors",
+  "livechat2mc.config.color.owner": "Owner Color",
+  "livechat2mc.config.color.moderator": "Moderator Color",
+  "livechat2mc.config.color.member": "Member Color",
+  "livechat2mc.config.color.user": "User Color",
+  "livechat2mc.config.filters": "Regex Filters"
+}
